@@ -3,9 +3,9 @@ import requests
 from streamlit_lottie import st_lottie  
 
 # file json format (File path)
-        lottie_url = "https://lottie.host/014c7f55-c04a-4e92-b604-4c4899e3a5e9/x2n7xRzfEB.json"
+lottie_url = "https://lottie.host/014c7f55-c04a-4e92-b604-4c4899e3a5e9/x2n7xRzfEB.json"
         
-        # Fungsi untuk memproses lottie url
+# Fungsi untuk memproses lottie url
 def load_lottie_url(url):
     r = requests.get(url)
     if r.status_code != 200:
@@ -75,7 +75,7 @@ def main():
     # Display a radio button in the sidebar
     selected_option = st.sidebar.radio('Main Menu', options)
     
-    # Perform actions based on the selected option
+# Perform actions based on the selected option
     if selected_option == 'Home':
         # Memproses animasi lottie
         lottie_json = load_lottie_url(lottie_url)
