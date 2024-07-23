@@ -2,6 +2,19 @@ import streamlit as st
 import requests
 from streamlit_lottie import st_lottie  
 
+# file json format (File path)
+        lottie_url = "https://lottie.host/014c7f55-c04a-4e92-b604-4c4899e3a5e9/x2n7xRzfEB.json"
+        
+        # Fungsi untuk memproses lottie url
+def load_lottie_url(url):
+    r = requests.get(url)
+    if r.status_code != 200:
+        return None
+    return r.json()
+        
+        # Memproses animasi lottie
+lottie_json = load_lottie_url(lottie_url)
+
 # Fungsi untuk menghitung AQI berdasarkan PM2.5
 def calculate_aqi(pm25):
     c = [0, 12.1, 35.5, 55.5, 150.5, 250.5, 350.5, 500.5]
@@ -65,19 +78,6 @@ def main():
     
     # Perform actions based on the selected option
     if selected_option == 'Home':
-        # file json format (File path)
-        lottie_url = "https://lottie.host/014c7f55-c04a-4e92-b604-4c4899e3a5e9/x2n7xRzfEB.json"
-        
-        # Fungsi untuk memproses lottie url
-        def load_lottie_url(url):
-            r = requests.get(url)
-            if r.status_code != 200:
-                return None
-            return r.json()
-        
-        # Memproses animasi lottie
-        lottie_json = load_lottie_url(lottie_url)
-        
         # Menampilkan animasi lottie
         with col2 :
             if lottie_json is not None:
