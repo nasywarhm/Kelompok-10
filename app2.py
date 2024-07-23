@@ -1,4 +1,6 @@
 import streamlit as st
+import requests
+from streamlit_lottie import st_lottie  
 
 # Fungsi untuk menghitung AQI berdasarkan PM2.5
 def calculate_aqi(pm25):
@@ -63,9 +65,26 @@ def main():
     
     # Perform actions based on the selected option
     if selected_option == 'Home':
-        st.write('You selected Option 1. Here are some details about Option 1.')
-        st.write('Details about Option 1...')
+        # file json format (File path)
+        lottie_url = "https://lottie.host/014c7f55-c04a-4e92-b604-4c4899e3a5e9/x2n7xRzfEB.json"
         
+        # Fungsi untuk memproses lottie url
+        def load_lottie_url(url):
+            r = requests.get(url)
+            if r.status_code != 200:
+                return None
+            return r.json()
+        
+        # Memproses animasi lottie
+        lottie_json = load_lottie_url(lottie_url)
+        
+        # Menampilkan animasi lottie
+        with col2 :
+            if lottie_json is not None:
+                st_lottie(lottie_json)
+            else:
+                st.write("Failed to load Lottie animation.")
+                
     elif selected_option == 'Kalkulator AQI':
         st.title('Kalkulator AQI (Air Quality Index)')
         st.write('Masukkan nilai PM2.5 untuk menghitung AQI:')
