@@ -12,8 +12,7 @@ def load_lottie_url(url):
         return None
     return r.json()
         
-        # Memproses animasi lottie
-lottie_json = load_lottie_url(lottie_url)
+        
 
 # Fungsi untuk menghitung AQI berdasarkan PM2.5
 def calculate_aqi(pm25):
@@ -78,6 +77,9 @@ def main():
     
     # Perform actions based on the selected option
     if selected_option == 'Home':
+        # Memproses animasi lottie
+        lottie_json = load_lottie_url(lottie_url)
+            
         # Menampilkan animasi lottie
         with col2 :
             if lottie_json is not None:
