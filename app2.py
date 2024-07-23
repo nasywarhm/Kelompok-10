@@ -73,7 +73,7 @@ def main():
     options = ('Home', 'Kalkulator AQI')
     
     # Display a radio button in the sidebar
-    selected_option = st.sidebar.radio('Main Menu', options)
+    selected_option = st.sidebar.selectbox('Main Menu', options)
     
 # Perform actions based on the selected option
     if selected_option == 'Home':
