@@ -73,22 +73,17 @@ def main():
             st.subheader('Kondisi berdasarkan nilai AQI:')
             if aqi_value <= 50:
                 st.markdown("Kualitas udara baik; tidak ada atau sedikit risiko bagi kesehatan.")
-                st.image("imgweb/coba1.jpeg", use_column_width=True)
             elif aqi_value <= 100:
                 st.markdown("Kualitas udara sedang; risiko kesehatan bagi kelompok sensitif.")
-                st.image("https://www.airnow.gov/sites/default/files/aqi-51-100.png", use_column_width=True)
             elif aqi_value <= 150:
                 st.markdown("Kualitas udara tidak sehat bagi kelompok sensitif.")
-                st.image("https://www.airnow.gov/sites/default/files/aqi-101-150.png", use_column_width=True)
             elif aqi_value <= 200:
                 st.markdown("Kualitas udara tidak sehat; bagi semua orang dapat terpengaruh.")
-                st.image("https://www.airnow.gov/sites/default/files/aqi-151-200.png", use_column_width=True)
             elif aqi_value <= 300:
                 st.markdown("Kualitas udara sangat tidak sehat; efek serius pada kesehatan.")
-                st.image("https://www.airnow.gov/sites/default/files/aqi-201-300.png", use_column_width=True)
             else:
                 st.markdown("Kualitas udara berbahaya; risiko kesehatan darurat.")
-                st.image("https://www.airnow.gov/sites/default/files/aqi-301-500.png", use_column_width=True)
-
+                
+            st.image("imgweb/aqi.png", use_column_width=True)
 if __name__ == '__main__':
     main()
