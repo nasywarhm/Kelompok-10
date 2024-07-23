@@ -80,6 +80,17 @@ def main():
             # Pembuatan 2 kolom
         col1, col2 = st.columns([1, 2])
 
+        with col1 :
+                st.header ("Project LPK Kelompok 10")
+
+                st.write ("1. Aura Shyfa (2330490)")
+                st.write ("2. Nasywa Rahmadani H (2330518)")
+                st.write ("3. Nazmi Asyam (2330519)")
+                st.write ("4. Shafiqah Fauziah (2330530)")
+                st.write ("5. Selviana Valia (2230471)")
+                st.write ("6. Zaki Raditya (2330534)")
+
+            
         # Memproses animasi lottie
         lottie_json = load_lottie_url(lottie_url)
             
@@ -121,5 +132,6 @@ def main():
                     st.markdown("Kualitas udara berbahaya; risiko kesehatan darurat.")
                     
                 st.image("imgweb/aqi.png", use_column_width=True)
+                    
 if __name__ == '__main__':
     main()
