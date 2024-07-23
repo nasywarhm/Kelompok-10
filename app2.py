@@ -56,7 +56,7 @@ def get_aqi_color(aqi_value):
 # Fungsi untuk menampilkan UI aplikasi menggunakan Streamlit
 def main():
     # List of options for the radio button
-    options = ('Home', 'Kalklulator AQI')
+    options = ('Home', 'Kalkulator AQI')
     
     # Display a radio button in the sidebar
     selected_option = st.sidebar.radio('Main Menu', options)
