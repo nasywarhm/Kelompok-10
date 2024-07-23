@@ -55,35 +55,47 @@ def get_aqi_color(aqi_value):
 
 # Fungsi untuk menampilkan UI aplikasi menggunakan Streamlit
 def main():
-    st.title('Kalkulator AQI (Air Quality Index)')
-    st.write('Masukkan nilai PM2.5 untuk menghitung AQI:')
-
-    pm25_input = st.number_input('PM2.5 (µg/m³)', min_value=0.0, step=0.1, format='%f')
-
-    if st.button('Hitung AQI'):
-        if pm25_input:
-            aqi_value = calculate_aqi(pm25_input)
-            aqi_description = get_aqi_description(aqi_value)
-            aqi_color = get_aqi_color(aqi_value)
-
-            st.subheader(f'Nilai AQI yang dihitung adalah: {aqi_value}')
-            st.markdown(f'<p style="color: {aqi_color}; font-size: large;">{aqi_description}</p>', unsafe_allow_html=True)
-
-            # Menampilkan informasi tambahan berdasarkan rentang nilai AQI
-            st.subheader('Kondisi berdasarkan nilai AQI:')
-            if aqi_value <= 50:
-                st.markdown("Kualitas udara baik; tidak ada atau sedikit risiko bagi kesehatan.")
-            elif aqi_value <= 100:
-                st.markdown("Kualitas udara sedang; risiko kesehatan bagi kelompok sensitif.")
-            elif aqi_value <= 150:
-                st.markdown("Kualitas udara tidak sehat bagi kelompok sensitif.")
-            elif aqi_value <= 200:
-                st.markdown("Kualitas udara tidak sehat; bagi semua orang dapat terpengaruh.")
-            elif aqi_value <= 300:
-                st.markdown("Kualitas udara sangat tidak sehat; efek serius pada kesehatan.")
-            else:
-                st.markdown("Kualitas udara berbahaya; risiko kesehatan darurat.")
-                
-            st.image("imgweb/aqi.png", use_column_width=True)
+    # List of options for the radio button
+    options = ('Home', 'Kalklulator AQI')
+    
+    # Display a radio button in the sidebar
+    selected_option = st.sidebar.radio('Main Menu', options)
+    
+    # Perform actions based on the selected option
+    if selected_option == 'Home':
+        st.write('You selected Option 1. Here are some details about Option 1.')
+        st.write('Details about Option 1...')
+        
+    elif selected_option == 'Kalkulator AQI':
+        st.title('Kalkulator AQI (Air Quality Index)')
+        st.write('Masukkan nilai PM2.5 untuk menghitung AQI:')
+    
+        pm25_input = st.number_input('PM2.5 (µg/m³)', min_value=0.0, step=0.1, format='%f')
+    
+        if st.button('Hitung AQI'):
+            if pm25_input:
+                aqi_value = calculate_aqi(pm25_input)
+                aqi_description = get_aqi_description(aqi_value)
+                aqi_color = get_aqi_color(aqi_value)
+    
+                st.subheader(f'Nilai AQI yang dihitung adalah: {aqi_value}')
+                st.markdown(f'<p style="color: {aqi_color}; font-size: large;">{aqi_description}</p>', unsafe_allow_html=True)
+    
+                # Menampilkan informasi tambahan berdasarkan rentang nilai AQI
+                st.subheader('Kondisi berdasarkan nilai AQI:')
+                if aqi_value <= 50:
+                    st.markdown("Kualitas udara baik; tidak ada atau sedikit risiko bagi kesehatan.")
+                elif aqi_value <= 100:
+                    st.markdown("Kualitas udara sedang; risiko kesehatan bagi kelompok sensitif.")
+                elif aqi_value <= 150:
+                    st.markdown("Kualitas udara tidak sehat bagi kelompok sensitif.")
+                elif aqi_value <= 200:
+                    st.markdown("Kualitas udara tidak sehat; bagi semua orang dapat terpengaruh.")
+                elif aqi_value <= 300:
+                    st.markdown("Kualitas udara sangat tidak sehat; efek serius pada kesehatan.")
+                else:
+                    st.markdown("Kualitas udara berbahaya; risiko kesehatan darurat.")
+                    
+                st.image("imgweb/aqi.png", use_column_width=True)
 if __name__ == '__main__':
     main()
