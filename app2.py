@@ -77,6 +77,9 @@ def main():
     
 # Perform actions based on the selected option
     if selected_option == 'Home':
+            # Pembuatan 2 kolom
+        col1, col2 = st.columns([1, 2])
+
         # Memproses animasi lottie
         lottie_json = load_lottie_url(lottie_url)
             
