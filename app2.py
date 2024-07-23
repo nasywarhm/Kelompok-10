@@ -73,7 +73,7 @@ def main():
             st.subheader('Kondisi berdasarkan nilai AQI:')
             if aqi_value <= 50:
                 st.markdown("Kualitas udara baik; tidak ada atau sedikit risiko bagi kesehatan.")
-                st.image("https://www.airnow.gov/sites/default/files/aqi-0-50.png", use_column_width=True)
+                st.image("imgweb/coba1.jpeg", use_column_width=True)
             elif aqi_value <= 100:
                 st.markdown("Kualitas udara sedang; risiko kesehatan bagi kelompok sensitif.")
                 st.image("https://www.airnow.gov/sites/default/files/aqi-51-100.png", use_column_width=True)
