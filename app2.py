@@ -81,20 +81,37 @@ def get_aqi_action(aqi_value):
 
 # Fungsi untuk menampilkan UI aplikasi menggunakan Streamlit
 def main():
-    # Mengatur gaya CSS untuk ukuran font
+    # Mengatur gaya CSS untuk ukuran font dan latar belakang
     st.markdown(
         """
         <style>
+        body {
+            background-image: url('https://www.example.com/your-background-image.jpg'); /* Ganti dengan URL gambar latar belakang Anda */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
         .title {
             font-size: 36px;
             font-weight: bold;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
         }
         .header {
             font-size: 24px;
             font-weight: bold;
+            color: #ffffff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
         .description {
             font-size: 18px;
+            color: #ffffff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        .sidebar .sidebar-content {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 10px;
         }
         </style>
         """,
@@ -143,31 +160,57 @@ def main():
         st.markdown('<div class="header">Definisi AQI</div>', unsafe_allow_html=True)
         st.markdown("""
         <div class="description">
-        Air Quality Index (AQI) adalah indeks yang digunakan untuk menggambarkan kualitas udara berdasarkan tingkat polutan tertentu. Nilai AQI berkisar dari 0 hingga 500, dengan kategori yang menunjukkan tingkat risiko kesehatan yang terkait. AQI membantu masyarakat memahami seberapa bersih atau tercemarnya udara di wilayah mereka dan tindakan pencegahan apa yang perlu diambil.
+        Air Quality Index (AQI) adalah angka yang digunakan untuk menggambarkan tingkat polusi udara. AQI dihitung berdasarkan konsentrasi beberapa polutan udara seperti PM2.5, PM10, ozon, karbon monoksida, dan nitrogen dioksida.
         </div>
         """, unsafe_allow_html=True)
 
     elif selected_option == 'Kalkulator AQI':
-        st.markdown('<div class="title">Kalkulator AQI (Air Quality Index)</div>', unsafe_allow_html=True)
-        st.markdown('<div class="description">Masukkan nilai PM2.5 untuk menghitung AQI:</div>', unsafe_allow_html=True)
+        st.markdown('<div class="title">Kalkulator AQI</div>', unsafe_allow_html=True)
+        pm25 = st.number_input('Masukkan nilai PM2.5:', min_value=0.0, max_value=1000.0, value=0.0, step=0.1)
+        
+        if pm25 >= 0:
+            aqi_value = calculate_aqi(pm25)
+            aqi_description = get_aqi_description(aqi_value)
+            aqi_color = get_aqi_color(aqi_value)
+            aqi_action = get_aqi_action(aqi_value)
+            
+            st.markdown(f'<div class="description" style="color: {aqi_color};">AQI: {aqi_value}</div>', unsafe_allow_html=True)
+            st.markdown(f'<div class="description">{aqi_description}</div>', unsafe_allow_html=True)
+            st.markdown(f'<div class="description">{aqi_action}</div>', unsafe_allow_html=True)
 
-        pm25_input = st.number_input('PM2.5 (µg/m³)', min_value=0.0, step=0.1, format='%f')
-
-
-
-        if st.button('Hitung AQI'):
-            if pm25_input:
-                aqi_value = calculate_aqi(pm25_input)
-                aqi_description = get_aqi_description(aqi_value)
-                aqi_color = get_aqi_color(aqi_value)
-                aqi_action = get_aqi_action(aqi_value)
-                st.subheader(f'Nilai AQI yang dihitung adalah: {aqi_value}')
-                st.markdown(f'<p style="color: {aqi_color}; font-size: large;">{aqi_description}</p>', unsafe_allow_html=True)
-                st.markdown(f'<p style="font-size: large;">Tindakan yang harus dilakukan: {aqi_action}</p>', unsafe_allow_html=True)
-
-                # Menampilkan informasi tambahan berdasarkan rentang nilai AQI
-                st.subheader('Kondisi berdasarkan nilai AQI:')
-                st.image("imgweb/aqi.png", use_column_width=True)
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
+
+st.markdown(
+    """
+    <style>
+    body {
+        background: linear-gradient(to bottom, #87CEEB, #B0E57C); /* Gradasi dari biru ke hijau */
+        color: #ffffff;
+    }
+    .title {
+        font-size: 36px;
+        font-weight: bold;
+        color: #ffffff;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    }
+    .header {
+        font-size: 24px;
+        font-weight: bold;
+        color: #ffffff;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+    .description {
+        font-size: 18px;
+        color: #ffffff;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+    .sidebar .sidebar-content {
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 10px;
+        padding: 10px;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
