@@ -82,7 +82,7 @@ def get_aqi_action(aqi_value):
 
 # Function to display the UI
 def main():
-    options = ('Home', 'Definisi', 'Kalkulator AQI', 'Hubungan PM2.5 dan AQI')
+    options = ('Home', 'Definisi', 'Hubungan PM2.5 dan AQI', 'Kalkulator AQI')
     selected_option = st.sidebar.selectbox('Main Menu', options)
 
     if selected_option == 'Home':
@@ -117,6 +117,19 @@ def main():
         Air Quality Index (AQI) adalah indeks yang digunakan untuk menggambarkan kualitas udara berdasarkan tingkat polutan tertentu. Nilai AQI berkisar dari 0 hingga 500, dengan kategori yang menunjukkan tingkat risiko kesehatan yang terkait. AQI membantu masyarakat memahami seberapa bersih atau tercemarnya udara di wilayah mereka dan tindakan pencegahan apa yang perlu diambil.
         """)
 
+    elif selected_option == 'Hubungan PM2.5 dan AQI':
+        st.title('Hubungan PM2.5 dan AQI')
+        st.write("""
+        PM2.5 dan AQI memiliki hubungan langsung, karena AQI dihitung berdasarkan konsentrasi PM2.5 di udara. Semakin tinggi konsentrasi PM2.5, semakin tinggi nilai AQI, dan ini menunjukkan kualitas udara yang semakin buruk. Berikut adalah rentang nilai PM2.5 dan dampaknya terhadap AQI:
+        
+        - **0 - 12 µg/m³**: AQI berada pada kategori baik (0 - 50).
+        - **12.1 - 35.5 µg/m³**: AQI berada pada kategori sedang (51 - 100).
+        - **35.6 - 55.5 µg/m³**: AQI berada pada kategori tidak sehat bagi kelompok sensitif (101 - 150).
+        - **55.6 - 150.5 µg/m³**: AQI berada pada kategori tidak sehat (151 - 200).
+        - **150.6 - 250.5 µg/m³**: AQI berada pada kategori sangat tidak sehat (201 - 300).
+        - **250.6 µg/m³ dan lebih**: AQI berada pada kategori berbahaya (301 - 500).
+        """)
+
     elif selected_option == 'Kalkulator AQI':
         st.title('Kalkulator AQI (Air Quality Index)')
         st.write('Masukkan nilai PM2.5 untuk menghitung AQI:')
@@ -135,19 +148,6 @@ def main():
 
                 st.subheader('Tabel Nilai AQI:')
                 st.image("imgweb/aqi.png", use_column_width=True)
-
-    elif selected_option == 'Hubungan PM2.5 dan AQI':
-        st.title('Hubungan PM2.5 dan AQI')
-        st.write("""
-        PM2.5 dan AQI memiliki hubungan langsung, karena AQI dihitung berdasarkan konsentrasi PM2.5 di udara. Semakin tinggi konsentrasi PM2.5, semakin tinggi nilai AQI, dan ini menunjukkan kualitas udara yang semakin buruk. Berikut adalah rentang nilai PM2.5 dan dampaknya terhadap AQI:
-        
-        - **0 - 12 µg/m³**: AQI berada pada kategori baik (0 - 50).
-        - **12.1 - 35.5 µg/m³**: AQI berada pada kategori sedang (51 - 100).
-        - **35.6 - 55.5 µg/m³**: AQI berada pada kategori tidak sehat bagi kelompok sensitif (101 - 150).
-        - **55.6 - 150.5 µg/m³**: AQI berada pada kategori tidak sehat (151 - 200).
-        - **150.6 - 250.5 µg/m³**: AQI berada pada kategori sangat tidak sehat (201 - 300).
-        - **250.6 µg/m³ dan lebih**: AQI berada pada kategori berbahaya (301 - 500).
-        """)
 
 if __name__ == '__main__':
     main()
