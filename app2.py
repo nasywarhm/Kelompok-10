@@ -93,7 +93,7 @@ def main():
 )
 
     # List of options for the select box
-    options = ('Home', 'Definisi', 'Kalkulator AQI')
+    options = ('Home','Definisi','Kalkulator AQI')
 
     # Display a select box in the sidebar
     selected_option = st.sidebar.selectbox('Main Menu', options)
