@@ -131,15 +131,6 @@ def main():
     display_aqi_info()
 
 
-        # Memproses animasi lottie
-        lottie_json = load_lottie_url(lottie_url)
-            
-        # Menampilkan animasi lottie
-        with col1 :
-            if lottie_json is not None:
-                st_lottie(lottie_json)
-            else:
-                st.write("Failed to load Lottie animation.")
                 
     elif selected_option == 'Kalkulator AQI':
         st.title('Kalkulator AQI (Air Quality Index)')
