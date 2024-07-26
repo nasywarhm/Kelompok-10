@@ -112,7 +112,7 @@ def main():
                 st.write("Failed to load Lottie animation.")
 
     elif selected_option == 'Definisi':
-        st.title('Definisi PM2.5 dan AQI':'U+1F32B')
+        st.title('Definisi PM2.5 dan AQI')
 
         st.header('PM2.5')
         st.write("""
