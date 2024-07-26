@@ -154,7 +154,7 @@ def main():
         
         Grafik atau tabel di bawah ini menunjukkan hubungan antara PM2.5 dan AQI secara visual.
         """)
-        st.image("imgweb/pm25_vs_aqi.png", use_column_width=True)  # Assuming you have a related image
+        st.image("imgweb/aqi.png", use_column_width=True)
 
 if __name__ == '__main__':
     main()
