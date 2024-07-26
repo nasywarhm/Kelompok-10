@@ -64,10 +64,25 @@ def get_aqi_color(aqi_value):
     else:
         return "purple"  # warna untuk AQI berbahaya
 
+# Fungsi untuk mendapatkan tindakan yang harus diambil berdasarkan nilai AQI
+def get_aqi_action(aqi_value):
+    if aqi_value <= 50:
+        return "Tidak perlu tindakan khusus."
+    elif aqi_value <= 100:
+        return "Kelompok sensitif sebaiknya mengurangi aktivitas luar ruangan."
+    elif aqi_value <= 150:
+        return "Kelompok sensitif sebaiknya menghindari aktivitas luar ruangan. Orang lain sebaiknya mengurangi aktivitas luar ruangan."
+    elif aqi_value <= 200:
+        return "Semua orang sebaiknya menghindari aktivitas luar ruangan."
+    elif aqi_value <= 300:
+        return "Semua orang sebaiknya menghindari aktivitas luar ruangan dan menggunakan masker."
+    else:
+        return "Semua orang sebaiknya tetap di dalam ruangan dan menggunakan pembersih udara jika tersedia."
+
 # Fungsi untuk menampilkan UI aplikasi menggunakan Streamlit
 def main():
     # List of options for the select box
-    options = ('Home', 'Kalkulator AQI', 'Definisi')
+    options = ('Home', 'Definisi', 'Kalkulator AQI')
 
     # Display a select box in the sidebar
     selected_option = st.sidebar.selectbox('Main Menu', options)
@@ -96,6 +111,19 @@ def main():
             else:
                 st.write("Failed to load Lottie animation.")
 
+    elif selected_option == 'Definisi':
+        st.title('Definisi PM2.5 dan AQI')
+
+        st.header('PM2.5')
+        st.write("""
+        PM2.5 adalah singkatan dari Particulate Matter 2.5, yang merujuk pada partikel udara dengan diameter kurang dari 2,5 mikrometer. Partikel ini sangat kecil dan dapat masuk ke dalam paru-paru dan bahkan aliran darah, menyebabkan berbagai masalah kesehatan termasuk penyakit pernapasan dan kardiovaskular.
+        """)
+
+        st.header('AQI')
+        st.write("""
+        Air Quality Index (AQI) adalah indeks yang digunakan untuk menggambarkan kualitas udara berdasarkan tingkat polutan tertentu. Nilai AQI berkisar dari 0 hingga 500, dengan kategori yang menunjukkan tingkat risiko kesehatan yang terkait. AQI membantu masyarakat memahami seberapa bersih atau tercemarnya udara di wilayah mereka dan tindakan pencegahan apa yang perlu diambil.
+        """)
+
     elif selected_option == 'Kalkulator AQI':
         st.title('Kalkulator AQI (Air Quality Index)')
         st.write('Masukkan nilai PM2.5 untuk menghitung AQI:')
@@ -107,26 +135,14 @@ def main():
                 aqi_value = calculate_aqi(pm25_input)
                 aqi_description = get_aqi_description(aqi_value)
                 aqi_color = get_aqi_color(aqi_value)
+                aqi_action = get_aqi_action(aqi_value)
                 st.subheader(f'Nilai AQI yang dihitung adalah: {aqi_value}')
                 st.markdown(f'<p style="color: {aqi_color}; font-size: large;">{aqi_description}</p>', unsafe_allow_html=True)
+                st.markdown(f'<p style="font-size: large;">Tindakan yang harus dilakukan: {aqi_action}</p>', unsafe_allow_html=True)
 
                 # Menampilkan informasi tambahan berdasarkan rentang nilai AQI
                 st.subheader('Kondisi berdasarkan nilai AQI:')
                 st.image("imgweb/aqi.png", use_column_width=True)
-
-   
-    elif selected_option == 'Definisi':
-        st.title('Definisi PM2.5 dan AQI')
-
-        st.header('Definisi PM2.5')
-        st.write("""
-        PM2.5 adalah singkatan dari Particulate Matter 2.5, yang merujuk pada partikel udara dengan diameter kurang dari 2,5 mikrometer. Partikel ini sangat kecil dan dapat masuk ke dalam paru-paru dan bahkan aliran darah, menyebabkan berbagai masalah kesehatan termasuk penyakit pernapasan dan kardiovaskular.
-        """)
-
-        st.header('Definisi AQI')
-        st.write("""
-        Air Quality Index (AQI) adalah indeks yang digunakan untuk menggambarkan kualitas udara berdasarkan tingkat polutan tertentu. Nilai AQI berkisar dari 0 hingga 500, dengan kategori yang menunjukkan tingkat risiko kesehatan yang terkait. AQI membantu masyarakat memahami seberapa bersih atau tercemarnya udara di wilayah mereka dan tindakan pencegahan apa yang perlu diambil.
-        """)
 
 if __name__ == '__main__':
     main()
