@@ -67,7 +67,7 @@ def get_aqi_color(aqi_value):
 # Fungsi untuk menampilkan UI aplikasi menggunakan Streamlit
 def main():
     # List of options for the select box
-    options = ('Home', 'Kalkulator AQI', 'Teori PM2.5 dan Definisi AQI')
+    options = ('Home', 'Kalkulator AQI', 'Definisi')
 
     # Display a select box in the sidebar
     selected_option = st.sidebar.selectbox('Main Menu', options)
@@ -114,20 +114,19 @@ def main():
                 st.subheader('Kondisi berdasarkan nilai AQI:')
                 st.image("imgweb/aqi.png", use_column_width=True)
 
-    elif selected_option == 'Teori PM2.5 dan Definisi AQI':
-        st.title('Teori PM2.5 dan Definisi AQI')
+   
+    elif selected_option == 'Definisi':
+        st.title('Definisi PM2.5 dan AQI')
 
-        st.header('Apa itu PM2.5?')
+        st.header('Definisi PM2.5')
         st.write("""
-        PM2.5 adalah partikel udara dengan diameter kurang dari 2,5 mikrometer. Partikel ini cukup kecil untuk masuk ke dalam paru-paru dan bahkan ke dalam aliran darah. Sumber utama PM2.5 adalah kendaraan bermotor, pembakaran bahan bakar fosil, kebakaran hutan, dan beberapa proses industri.
-        PM2.5 dapat menyebabkan berbagai masalah kesehatan termasuk penyakit pernapasan dan kardiovaskular.
+        PM2.5 adalah singkatan dari Particulate Matter 2.5, yang merujuk pada partikel udara dengan diameter kurang dari 2,5 mikrometer. Partikel ini sangat kecil dan dapat masuk ke dalam paru-paru dan bahkan aliran darah, menyebabkan berbagai masalah kesehatan termasuk penyakit pernapasan dan kardiovaskular.
         """)
 
-        st.header('Apa itu AQI?')
+        st.header('Definisi AQI')
         st.write("""
-        AQI (Air Quality Index) adalah indeks yang digunakan untuk menggambarkan kualitas udara di suatu wilayah berdasarkan beberapa polutan utama termasuk PM2.5, PM10, ozon, nitrogen dioksida, sulfur dioksida, dan karbon monoksida. 
-        Nilai AQI berkisar dari 0 hingga 500, dengan kategori yang berbeda untuk menggambarkan tingkat risiko kesehatan yang terkait dengan tingkat polutan tertentu.
+        Air Quality Index (AQI) adalah indeks yang digunakan untuk menggambarkan kualitas udara berdasarkan tingkat polutan tertentu. Nilai AQI berkisar dari 0 hingga 500, dengan kategori yang menunjukkan tingkat risiko kesehatan yang terkait. AQI membantu masyarakat memahami seberapa bersih atau tercemarnya udara di wilayah mereka dan tindakan pencegahan apa yang perlu diambil.
         """)
-        
+
 if __name__ == '__main__':
     main()
