@@ -78,6 +78,7 @@ def get_aqi_action(aqi_value):
         return "Semua orang sebaiknya menghindari aktivitas luar ruangan dan menggunakan masker."
     else:
         return "Semua orang sebaiknya tetap di dalam ruangan dan menggunakan pembersih udara jika tersedia."
+         st.image("imgweb/aqi.png", use_column_width=True)
 
 # Fungsi untuk menampilkan UI aplikasi menggunakan Streamlit
 def main():
@@ -154,7 +155,7 @@ def main():
         
         Grafik atau tabel di bawah ini menunjukkan hubungan antara PM2.5 dan AQI secara visual.
         """)
-        st.image("imgweb/aqi.png", use_column_width=True)
+       
 
 if __name__ == '__main__':
     main()
