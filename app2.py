@@ -81,19 +81,8 @@ def get_aqi_action(aqi_value):
 
 # Fungsi untuk menampilkan UI aplikasi menggunakan Streamlit
 def main():
-   st.markdown(
-    """
-    <style>
-    body {
-        background-color: #ADD8E6; /* biru muda */
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
     # List of options for the select box
-    options = ('Home','Definisi','Kalkulator AQI')
+    options = ('Home', 'Definisi', 'Kalkulator AQI')
 
     # Display a select box in the sidebar
     selected_option = st.sidebar.selectbox('Main Menu', options)
@@ -154,6 +143,11 @@ def main():
                 # Menampilkan informasi tambahan berdasarkan rentang nilai AQI
                 st.subheader('Kondisi berdasarkan nilai AQI:')
                 st.image("imgweb/aqi.png", use_column_width=True)
+[theme]
+primaryColor = "#0000FF"  # Warna utama, bisa diubah sesuai kebutuhan
+backgroundColor = "#ADD8E6"  # Biru muda
+secondaryBackgroundColor = "#FFFFFF"  # Warna latar belakang sekunder
+textColor = "#000000"  # Warna teks
 
 if __name__ == '__main__':
     main()
