@@ -135,7 +135,7 @@ def main():
         lottie_json = load_lottie_url(lottie_url)
             
         # Menampilkan animasi lottie
-        with col2 :
+        with col1 :
             if lottie_json is not None:
                 st_lottie(lottie_json)
             else:
