@@ -82,7 +82,7 @@ def get_aqi_action(aqi_value):
 # Fungsi untuk menampilkan UI aplikasi menggunakan Streamlit
 def main():
     # List of options for the select box
-    options = ('Home', 'Definisi', 'Kalkulator AQI')
+    options = ('Home', 'Definisi', 'Kalkulator AQI', 'Hubungan PM2.5 dan AQI')
 
     # Display a select box in the sidebar
     selected_option = st.sidebar.selectbox('Main Menu', options)
@@ -143,6 +143,22 @@ def main():
                 # Menampilkan informasi tambahan berdasarkan rentang nilai AQI
                 st.subheader('Kondisi berdasarkan nilai AQI:')
                 st.image("imgweb/aqi.png", use_column_width=True)
+
+    elif selected_option == 'Hubungan PM2.5 dan AQI':
+        st.title('Hubungan PM2.5 dan AQI')
+        st.write("""
+        PM2.5 dan AQI memiliki hubungan langsung, karena AQI dihitung berdasarkan konsentrasi PM2.5 di udara. Semakin tinggi konsentrasi PM2.5, semakin tinggi nilai AQI, dan ini menunjukkan kualitas udara yang semakin buruk. Berikut adalah rentang nilai PM2.5 dan dampaknya terhadap AQI:
+        
+        - **0 - 12 µg/m³**: AQI berada pada kategori baik (0 - 50).
+        - **12.1 - 35.5 µg/m³**: AQI berada pada kategori sedang (51 - 100).
+        - **35.6 - 55.5 µg/m³**: AQI berada pada kategori tidak sehat bagi kelompok sensitif (101 - 150).
+        - **55.6 - 150.5 µg/m³**: AQI berada pada kategori tidak sehat (151 - 200).
+        - **150.6 - 250.5 µg/m³**: AQI berada pada kategori sangat tidak sehat (201 - 300).
+        - **250.6 µg/m³ dan lebih**: AQI berada pada kategori berbahaya (301 - 500).
+        
+        Grafik atau tabel di bawah ini menunjukkan hubungan antara PM2.5 dan AQI secara visual.
+        """)
+        st.image("imgweb/pm25_vs_aqi.png", use_column_width=True)  # Assuming you have a related image
 
 if __name__ == '__main__':
     main()
