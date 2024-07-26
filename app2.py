@@ -81,17 +81,16 @@ def get_aqi_action(aqi_value):
 
 # Fungsi untuk menampilkan UI aplikasi menggunakan Streamlit
 def main():
-    # Set background color
-    st.markdown(
-        """
-        <style>
-        .reportview-container {
-            background-color: #ADD8E6; /* biru muda */
-        }
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
+   st.markdown(
+    """
+    <style>
+    body {
+        background-color: #ADD8E6; /* biru muda */
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
     # List of options for the select box
     options = ('Home', 'Definisi', 'Kalkulator AQI')
