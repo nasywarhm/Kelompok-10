@@ -1,6 +1,4 @@
 import streamlit as st
-import matplotlib.pyplot as plt
-import numpy as np
 import requests
 from streamlit_lottie import st_lottie
 
@@ -81,26 +79,6 @@ def get_aqi_action(aqi_value):
     else:
         return "Semua orang sebaiknya tetap di dalam ruangan dan menggunakan pembersih udara jika tersedia."
 
-# Fungsi untuk membuat grafik hubungan PM2.5 dan AQI
-def plot_pm25_vs_aqi():
-    pm25_values = np.linspace(0, 300, 300)
-    aqi_values = [calculate_aqi(pm25) for pm25 in pm25_values]
-
-    plt.figure(figsize=(10, 6))
-    plt.plot(pm25_values, aqi_values, color='blue', linewidth=2)
-    plt.xlabel('Konsentrasi PM2.5 (µg/m³)')
-    plt.ylabel('Nilai AQI')
-    plt.title('Hubungan PM2.5 dengan Nilai AQI')
-    plt.grid(True)
-    plt.axhline(y=50, color='green', linestyle='--', label='AQI = 50 (Baik)')
-    plt.axhline(y=100, color='yellow', linestyle='--', label='AQI = 100 (Sedang)')
-    plt.axhline(y=150, color='orange', linestyle='--', label='AQI = 150 (Tidak Sehat bagi Kelompok Sensitif)')
-    plt.axhline(y=200, color='red', linestyle='--', label='AQI = 200 (Tidak Sehat)')
-    plt.axhline(y=300, color='purple', linestyle='--', label='AQI = 300 (Sangat Tidak Sehat)')
-    plt.legend()
-    plt.tight_layout()
-    return plt
-
 # Fungsi untuk menampilkan UI aplikasi menggunakan Streamlit
 def main():
     # List of options for the select box
@@ -162,23 +140,22 @@ def main():
                 st.markdown(f'<p style="color: {aqi_color}; font-size: large;">{aqi_description}</p>', unsafe_allow_html=True)
                 st.markdown(f'<p style="font-size: large;">Tindakan yang harus dilakukan: {aqi_action}</p>', unsafe_allow_html=True)
 
+                # Menampilkan informasi tambahan berdasarkan rentang nilai AQI
+                st.subheader('Kondisi berdasarkan nilai AQI:')
+                st.image("imgweb/aqi.png", use_column_width=True)
+
     elif selected_option == 'Hubungan PM2.5 dan AQI':
         st.title('Hubungan PM2.5 dan AQI')
         st.write("""
         PM2.5 dan AQI memiliki hubungan langsung, karena AQI dihitung berdasarkan konsentrasi PM2.5 di udara. Semakin tinggi konsentrasi PM2.5, semakin tinggi nilai AQI, dan ini menunjukkan kualitas udara yang semakin buruk. Berikut adalah rentang nilai PM2.5 dan dampaknya terhadap AQI:
-
+        
         - **0 - 12 µg/m³**: AQI berada pada kategori baik (0 - 50).
         - **12.1 - 35.5 µg/m³**: AQI berada pada kategori sedang (51 - 100).
         - **35.6 - 55.5 µg/m³**: AQI berada pada kategori tidak sehat bagi kelompok sensitif (101 - 150).
         - **55.6 - 150.5 µg/m³**: AQI berada pada kategori tidak sehat (151 - 200).
         - **150.6 - 250.5 µg/m³**: AQI berada pada kategori sangat tidak sehat (201 - 300).
         - **250.6 µg/m³ dan lebih**: AQI berada pada kategori berbahaya (301 - 500).
-
-        Grafik atau tabel di bawah ini menunjukkan hubungan antara PM2.5 dan AQI secara visual.
-        """)
-        # Plotting the PM2.5 vs AQI graph
-        fig = plot_pm25_vs_aqi()
-        st.pyplot(fig)
+        
 
 if __name__ == '__main__':
     main()
