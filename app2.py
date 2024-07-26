@@ -70,15 +70,15 @@ def get_aqi_color(aqi_value):
 # Fungsi untuk menampilkan UI aplikasi menggunakan Streamlit
 def main():
     # List of options for the radio button
-    options = ('Home', 'Kalkulator AQI')
+    options = ('Home','Deefinisi' 'Kalkulator AQI')
     
     # Display a radio button in the sidebar
     selected_option = st.sidebar.selectbox('Main Menu', options)
     
 # Perform actions based on the selected option
     if selected_option == 'Home':
-            # Pembuatan 2 kolom
-        col1, col2 = st.columns([1, 2])
+            # Pembuatan 3 kolom
+        col1, col2 = st.columns([1, 2,3])
 
         with col1 :
                 st.header ("Project LPK Kelompok 10")
@@ -89,8 +89,48 @@ def main():
                 st.write ("4. Shafiqah Fauziah (2330530)")
                 st.write ("5. Selviana Valia (2230471)")
                 st.write ("6. Zaki Raditya (2330534)")
+        with col2 :
+                st.header('Apa itu PM 2.5?')
+                st.write(
+        "PM 2.5 adalah partikel udara yang memiliki diameter kurang dari 2.5 mikrometer. "
+        "Karena ukurannya yang sangat kecil, PM 2.5 dapat dengan mudah masuk ke dalam saluran pernapasan dan "
+        "berpotensi menyebabkan masalah kesehatan."
+    )
+    
+    st.header('Bagaimana AQI Mengukur PM 2.5?')
+    st.write(
+        "Air Quality Index (AQI) adalah sistem pemeringkatan yang digunakan untuk menilai kualitas udara. "
+        "Nilai AQI untuk PM 2.5 mengukur konsentrasi rata-rata PM 2.5 dalam mikrogram per meter kubik (µg/m³) "
+        "dan mengubahnya menjadi nilai AQI berdasarkan standar kesehatan."
+    )
+    
+    st.header('Kategori AQI PM 2.5')
+    st.write(
+        "*Kategori AQI PM 2.5 dan Dampaknya:*\n\n"
+        "- *0-50 (Baik):* Kualitas udara dianggap baik dan risiko kesehatan sangat rendah.\n"
+        "- *51-100 (Sedang):* Kualitas udara cukup baik, tetapi ada risiko kesehatan untuk individu sensitif.\n"
+        "- *101-150 (Tidak Sehat untuk Kelompok Sensitif):* Kelompok sensitif seperti anak-anak, orang tua, dan mereka dengan masalah kesehatan mungkin mengalami dampak kesehatan.\n"
+        "- *151-200 (Tidak Sehat):* Semua orang mungkin mulai merasakan dampaknya. Kurangi aktivitas luar ruangan jika memungkinkan.\n"
+        "- *201-300 (Sangat Tidak Sehat):* Risiko kesehatan meningkat secara signifikan. Semua orang disarankan untuk menghindari aktivitas luar ruangan.\n"
+        "- *301-500 (Berbahaya):* Kondisi kualitas udara sangat buruk. Semua orang harus menghindari aktivitas luar ruangan dan tinggal di dalam ruangan."
+    )
+    
+    st.header('Dampak Kesehatan dari PM 2.5')
+    st.write(
+        "Paparan jangka panjang terhadap PM 2.5 dapat menyebabkan berbagai masalah kesehatan, termasuk:\n"
+        "- Masalah pernapasan seperti asma dan bronkitis\n"
+        "- Penyakit jantung\n"
+        "- Gangguan fungsi paru-paru\n"
+        "- Peningkatan risiko kematian dini\n"
+        "\n"
+        "Individu dengan kondisi kesehatan yang ada atau yang sudah tua mungkin lebih rentan terhadap dampak kesehatan PM 2.5."
+    )
 
-            
+# Main function
+def main():
+    display_aqi_info()
+
+
         # Memproses animasi lottie
         lottie_json = load_lottie_url(lottie_url)
             
@@ -117,21 +157,8 @@ def main():
                 st.markdown(f'<p style="color: {aqi_color}; font-size: large;">{aqi_description}</p>', unsafe_allow_html=True)
     
                 # Menampilkan informasi tambahan berdasarkan rentang nilai AQI
-                st.subheader('Kondisi berdasarkan nilai AQI:')
-                if aqi_value <= 50:
-                    st.markdown("Kualitas udara baik; tidak ada atau sedikit risiko bagi kesehatan.")
-                elif aqi_value <= 100:
-                    st.markdown("Kualitas udara sedang; risiko kesehatan bagi kelompok sensitif.")
-                elif aqi_value <= 150:
-                    st.markdown("Kualitas udara tidak sehat bagi kelompok sensitif.")
-                elif aqi_value <= 200:
-                    st.markdown("Kualitas udara tidak sehat; bagi semua orang dapat terpengaruh.")
-                elif aqi_value <= 300:
-                    st.markdown("Kualitas udara sangat tidak sehat; efek serius pada kesehatan.")
-                else:
-                    st.markdown("Kualitas udara berbahaya; risiko kesehatan darurat.")
-                    
-                st.image("imgweb/aqi.png", use_column_width=True)
+              
+                  st.image("imgweb/aqi.png", use_column_width=True)
                     
 if __name__ == '__main__':
     main()
