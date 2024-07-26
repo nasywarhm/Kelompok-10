@@ -133,7 +133,7 @@ def main():
                 st.markdown(f'<p style="color: {aqi_color}; font-size: large;">{aqi_description}</p>', unsafe_allow_html=True)
                 st.markdown(f'<p style="font-size: large;">Tindakan yang harus dilakukan: {aqi_action}</p>', unsafe_allow_html=True)
 
-                st.subheader('Kondisi berdasarkan nilai AQI:')
+                st.subheader('Tabel Nilai AQI:')
                 st.image("imgweb/aqi.png", use_column_width=True)
 
     elif selected_option == 'Hubungan PM2.5 dan AQI':
