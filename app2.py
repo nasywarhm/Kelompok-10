@@ -86,25 +86,25 @@ def main():
         """
         <style>
         body {
-            background-image: url('https://www.example.com/your-background-image.jpg'); /* Ganti dengan URL gambar latar belakang Anda */
+            background-image: url('https://www.istockphoto.com/en/vector/environmental-pollution-by-industrial-waste-cartoon-vector-gm1358898059-432389836'); /* Ganti dengan URL gambar latar belakang Anda */
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
         }
         .title {
-            font-size: 36px;
+            font-size: 38px;
             font-weight: bold;
             color: #ffffff;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
         }
         .header {
-            font-size: 24px;
+            font-size: 26px;
             font-weight: bold;
             color: #ffffff;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
         .description {
-            font-size: 18px;
+            font-size: 19px;
             color: #ffffff;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
