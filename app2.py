@@ -66,8 +66,8 @@ def get_aqi_color(aqi_value):
 
 # Fungsi untuk menampilkan UI aplikasi menggunakan Streamlit
 def main():
-    # List of options for the radio button
-    options = ('Home', 'Kalkulator AQI')
+    # List of options for the select box
+    options = ('Home', 'Kalkulator AQI', 'Teori PM2.5 dan Definisi AQI')
 
     # Display a select box in the sidebar
     selected_option = st.sidebar.selectbox('Main Menu', options)
@@ -113,6 +113,21 @@ def main():
                 # Menampilkan informasi tambahan berdasarkan rentang nilai AQI
                 st.subheader('Kondisi berdasarkan nilai AQI:')
                 st.image("imgweb/aqi.png", use_column_width=True)
-                
+
+    elif selected_option == 'Teori PM2.5 dan Definisi AQI':
+        st.title('Teori PM2.5 dan Definisi AQI')
+
+        st.header('Apa itu PM2.5?')
+        st.write("""
+        PM2.5 adalah partikel udara dengan diameter kurang dari 2,5 mikrometer. Partikel ini cukup kecil untuk masuk ke dalam paru-paru dan bahkan ke dalam aliran darah. Sumber utama PM2.5 adalah kendaraan bermotor, pembakaran bahan bakar fosil, kebakaran hutan, dan beberapa proses industri.
+        PM2.5 dapat menyebabkan berbagai masalah kesehatan termasuk penyakit pernapasan dan kardiovaskular.
+        """)
+
+        st.header('Apa itu AQI?')
+        st.write("""
+        AQI (Air Quality Index) adalah indeks yang digunakan untuk menggambarkan kualitas udara di suatu wilayah berdasarkan beberapa polutan utama termasuk PM2.5, PM10, ozon, nitrogen dioksida, sulfur dioksida, dan karbon monoksida. 
+        Nilai AQI berkisar dari 0 hingga 500, dengan kategori yang berbeda untuk menggambarkan tingkat risiko kesehatan yang terkait dengan tingkat polutan tertentu.
+        """)
+        
 if __name__ == '__main__':
     main()
