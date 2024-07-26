@@ -112,14 +112,14 @@ def main():
                 st.write("Failed to load Lottie animation.")
 
     elif selected_option == 'Definisi':
-        st.title('Definisi PM2.5 dan AQI')
+        st.title('Definisi PM2.5 dan AQI':'U+1F32B')
 
-        st.header('Definisi PM2.5')
+        st.header('PM2.5')
         st.write("""
         PM2.5 adalah singkatan dari Particulate Matter 2.5, yang merujuk pada partikel udara dengan diameter kurang dari 2,5 mikrometer. Partikel ini sangat kecil dan dapat masuk ke dalam paru-paru dan bahkan aliran darah, menyebabkan berbagai masalah kesehatan termasuk penyakit pernapasan dan kardiovaskular.
         """)
 
-        st.header('Definisi AQI')
+        st.header('AQI')
         st.write("""
         Air Quality Index (AQI) adalah indeks yang digunakan untuk menggambarkan kualitas udara berdasarkan tingkat polutan tertentu. Nilai AQI berkisar dari 0 hingga 500, dengan kategori yang menunjukkan tingkat risiko kesehatan yang terkait. AQI membantu masyarakat memahami seberapa bersih atau tercemarnya udara di wilayah mereka dan tindakan pencegahan apa yang perlu diambil.
         """)
