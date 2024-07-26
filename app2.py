@@ -1,5 +1,5 @@
-Import streamlit as st
-Import requests
+import streamlit as st
+import requests
 From streamlit_lottie import as_lottie
 # file json format (File path)
 lottie_url = "https://lottie.host/014c7f55-c04a-4e92-b604-4c4899e3a5e9/x2n7xRzfEB.json"   
