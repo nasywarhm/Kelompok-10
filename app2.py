@@ -143,11 +143,6 @@ def main():
                 # Menampilkan informasi tambahan berdasarkan rentang nilai AQI
                 st.subheader('Kondisi berdasarkan nilai AQI:')
                 st.image("imgweb/aqi.png", use_column_width=True)
-[theme]
-primaryColor = "#0000FF"  # Warna utama, bisa diubah sesuai kebutuhan
-backgroundColor = "#ADD8E6"  # Biru muda
-secondaryBackgroundColor = "#FFFFFF"  # Warna latar belakang sekunder
-textColor = "#000000"  # Warna teks
 
 if __name__ == '__main__':
     main()
