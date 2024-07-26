@@ -84,46 +84,7 @@ def main():
     # Mengatur gaya CSS untuk ukuran font dan latar belakang
     st.markdown(
         """
-        <style>
-        body {
-            background-image: url('https://www.istockphoto.com/en/vector/environmental-pollution-by-industrial-waste-cartoon-vector-gm1358898059-432389836'); /* Ganti dengan URL gambar latar belakang Anda */
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-        .title {
-            font-size: 38px;
-            font-weight: bold;
-            color: #ffffff;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-        }
-        .header {
-            font-size: 26px;
-            font-weight: bold;
-            color: #ffffff;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-        }
-        .description {
-            font-size: 19px;
-            color: #ffffff;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-        }
-        .sidebar .sidebar-content {
-            background-color: rgba(255, 255, 255, 0.8);
-            border-radius: 10px;
-            padding: 10px;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
-
-    # List of options for the select box
-    options = ('Home', 'Definisi', 'Kalkulator AQI')
-
-    # Display a select box in the sidebar
-    selected_option = st.sidebar.selectbox('Main Menu', options)
-
+     
     # Perform actions based on the selected option
     if selected_option == 'Home':
         # Pembuatan 2 kolom
@@ -181,36 +142,3 @@ def main():
 if __name__ == "__main__":
     main()
 
-st.markdown(
-    """
-    <style>
-    body {
-        background: linear-gradient(to bottom, #87CEEB, #B0E57C); /* Gradasi dari biru ke hijau */
-        color: #ffffff;
-    }
-    .title {
-        font-size: 36px;
-        font-weight: bold;
-        color: #ffffff;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    }
-    .header {
-        font-size: 24px;
-        font-weight: bold;
-        color: #ffffff;
-        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-    }
-    .description {
-        font-size: 18px;
-        color: #ffffff;
-        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-    }
-    .sidebar .sidebar-content {
-        background-color: rgba(255, 255, 255, 0.8);
-        border-radius: 10px;
-        padding: 10px;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
