@@ -85,17 +85,17 @@ def inject_css():
     st.markdown("""
         <style>
         .big-font {
-            font-size: 24px !important;
+            font-size: 28px !important;
         }
         .header-font {
-            font-size: 32px !important;
+            font-size: 34px !important;
             font-weight: bold;
         }
         .subheader-font {
             font-size: 28px !important;
         }
         .normal-font {
-            font-size: 20px !important;
+            font-size: 26px !important;
         }
         </style>
         """, unsafe_allow_html=True)
