@@ -92,7 +92,7 @@ def inject_css():
             font-weight: bold;
         }
         .subheader-font {
-            font-size: 28px !important;
+            font-size: 29px !important;
         }
         .normal-font {
             font-size: 26px !important;
